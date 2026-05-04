@@ -210,7 +210,7 @@ export default function ConnectorsGame() {
       {/* Text fields */}
       <div className="flex gap-4 mt-5">
         <div className="flex flex-col gap-1.5 flex-1">
-          <label className="font-black text-sm text-[#ff6597] drop-shadow">Впиши сюда свои собственные цели (не меньше 2)</label>
+          <label className="font-black text-sm text-[#ff6597] drop-shadow">Впиши сюда свои цели, если их не было в списке</label>
           <textarea
             rows={6}
             value={goals}
@@ -220,13 +220,13 @@ export default function ConnectorsGame() {
           />
         </div>
         <div className="flex flex-col gap-1.5 flex-1">
-          <label className="font-black text-sm text-[#ff6597] drop-shadow">Расскажи почему тебе важно достичь их</label>
+          <label className="font-black text-sm text-[#ff6597] drop-shadow">Напиши план по достижению одной цели</label>
           <textarea
             rows={6}
             value={explanation}
             onChange={e => setExplanation(e.target.value)}
             className="w-full rounded-2xl border-2 border-[#f9b5e5] bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm resize-none focus:outline-none focus:border-[#ff6597] transition-colors"
-            placeholder="Напиши объяснение здесь"
+            placeholder="Напиши план здесь"
           />
         </div>
       </div>
