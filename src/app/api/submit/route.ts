@@ -5,10 +5,6 @@ import { CATEGORIES } from '@/lib/data';
 export async function POST(req: NextRequest) {
   const { goals, explanation, slots, userId, userName } = await req.json();
 
-  if (!goals || !explanation) {
-    return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
-  }
-
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
