@@ -162,12 +162,14 @@ export default function ConnectorsGame() {
       const card = draggedCardRef.current;
       const wasDragging = touchDragActiveRef.current;
 
-      draggedCardRef.current = null;
       touchStartPosRef.current = null;
       touchDragActiveRef.current = false;
       removeGhost();
 
-      if (!card || !wasDragging) return;
+      if (!card || !wasDragging) {
+        draggedCardRef.current = null;
+        return;
+      }
 
       const touch = e.changedTouches[0];
       let target: Element | null = document.elementFromPoint(touch.clientX, touch.clientY);
@@ -175,11 +177,12 @@ export default function ConnectorsGame() {
         const catId = target.getAttribute('data-cat-id');
         const slotIdx = target.getAttribute('data-slot-index');
         if (catId && slotIdx !== null) {
-          handleDrop(catId, parseInt(slotIdx));
-          break;
+          handleDrop(catId, parseInt(slotIdx)); // handleDrop reads & clears draggedCardRef
+          return;
         }
         target = target.parentElement;
       }
+      draggedCardRef.current = null;
     };
 
     document.addEventListener('touchmove', onMove, { passive: false });

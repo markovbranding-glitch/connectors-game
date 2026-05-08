@@ -26,9 +26,9 @@ export default function DraggableCard({ card, placed, onDragStart, onTouchStart,
         ${placed
           ? 'opacity-30 pointer-events-none grayscale-[20%]'
           : 'cursor-grab hover:-translate-y-1 hover:scale-[1.03] active:cursor-grabbing active:scale-[0.97]'}
-        rounded-2xl text-white text-[0.95rem] font-black text-center
-        min-h-[68px] flex items-center justify-center leading-tight
-        px-3 py-3 shadow-[0_4px_0_rgba(0,0,0,0.2),0_6px_16px_rgba(0,0,0,0.15)]
+        rounded-xl lg:rounded-2xl text-white text-[0.72rem] lg:text-[0.95rem] font-black text-center
+        min-h-[52px] lg:min-h-[68px] flex items-center justify-center leading-tight
+        px-2 py-2 lg:px-3 lg:py-3 shadow-[0_3px_0_rgba(0,0,0,0.2),0_4px_12px_rgba(0,0,0,0.15)]
         transition-all duration-150 select-none
       `}
     >
