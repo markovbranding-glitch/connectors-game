@@ -7,17 +7,20 @@ interface Props {
   card: CardData;
   placed: boolean;
   onDragStart: (card: CardData) => void;
+  onTouchStart: (card: CardData, e: React.TouchEvent) => void;
   onClick: (card: CardData) => void;
 }
 
-export default function DraggableCard({ card, placed, onDragStart, onClick }: Props) {
+export default function DraggableCard({ card, placed, onDragStart, onTouchStart, onClick }: Props) {
   const bg = COLOR_MAP[card.color] ?? 'bg-gray-400';
 
   return (
     <div
       draggable={!placed}
       onDragStart={() => onDragStart(card)}
+      onTouchStart={placed ? undefined : (e) => onTouchStart(card, e)}
       onClick={() => onClick(card)}
+      style={placed ? undefined : { touchAction: 'none' }}
       className={`
         ${bg}
         ${placed

@@ -13,14 +13,16 @@ interface Props {
 
 export default function CategoryPanel({ category, slots, onDrop, onRemove, onCardClick }: Props) {
   return (
-    <div className="bg-white rounded-3xl p-4 shadow-[0_4px_24px_rgba(255,101,151,0.12)] border-2 border-[#f9b5e5]">
-      <div className="text-sm font-black text-center mb-3 text-[#ff6597] uppercase tracking-wide leading-snug">
+    <div className="bg-white rounded-3xl p-3 lg:p-4 shadow-[0_4px_24px_rgba(255,101,151,0.12)] border-2 border-[#f9b5e5]">
+      <div className="text-xs lg:text-sm font-black text-center mb-2 lg:mb-3 text-[#ff6597] uppercase tracking-wide leading-snug">
         {category.title}
       </div>
-      <div className="grid grid-cols-2 gap-1.5">
+      <div className="grid grid-cols-2 gap-1 lg:gap-1.5">
         {slots.map((card, i) => (
           <CategorySlot
             key={i}
+            catId={category.id}
+            slotIndex={i}
             filledCard={card}
             wide={i === slots.length - 1 && slots.length % 2 !== 0}
             onDrop={() => onDrop(i)}
