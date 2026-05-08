@@ -156,6 +156,13 @@ export default function ConnectorsGame() {
         ghostRef.current.style.top = `${touch.clientY - 34}px`;
         ghostRef.current.style.left = `${touch.clientX - 60}px`;
       }
+
+      // Auto-scroll when finger is near screen edges
+      const vh = window.innerHeight;
+      const ZONE = 80;
+      const SPEED = 8;
+      if (touch.clientY > vh - ZONE) window.scrollBy(0, SPEED);
+      else if (touch.clientY < ZONE) window.scrollBy(0, -SPEED);
     };
 
     const onEnd = (e: TouchEvent) => {
